@@ -5,7 +5,7 @@
   <groupId>org.shiloh</groupId>
   <artifactId>learn-rocketmq</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>learn-rocketmq</name>
   <description>学习Apache RocketMQ</description>
@@ -20,6 +20,10 @@
     </developer>
   </developers>
 
+  <modules>
+    <module>quick-start</module>
+  </modules>
+
   <properties>
     <java.version>1.8</java.version>
     <maven.compiler.source>8</maven.compiler.source>
@@ -29,6 +33,8 @@
 
     <junit.version>4.13.2</junit.version>
     <apache-rocketmq-client.version>5.0.5</apache-rocketmq-client.version>
+    <slfj-api.version>1.7.36</slfj-api.version>
+    <logback-classic.version>1.2.11</logback-classic.version>
   </properties>
 
   <dependencyManagement>
@@ -46,6 +52,31 @@
         <artifactId>rocketmq-client-java</artifactId>
         <version>${apache-rocketmq-client.version}</version>
       </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slfj-api.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${logback-classic.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+
+<!--  Global Deps-->
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+    </dependency>
+  </dependencies>
 </project>
