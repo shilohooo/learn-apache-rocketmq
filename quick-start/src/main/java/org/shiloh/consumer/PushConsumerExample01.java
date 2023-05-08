@@ -24,7 +24,7 @@ public class PushConsumerExample01 {
 
     public static void main(String[] args) throws Exception {
         // 接入点地址：需要设置成Proxy的地址和端口列表，一般是：xxx:8081;xxx:8081
-        final String endpoint = "172.29.67.83:8081";
+        final String endpoint = "172.23.192.104:8081";
         final ClientConfiguration configuration = ClientConfiguration.newBuilder()
                 .setEndpoints(endpoint)
                 .build();
