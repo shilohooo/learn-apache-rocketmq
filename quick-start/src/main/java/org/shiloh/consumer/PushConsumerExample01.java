@@ -9,6 +9,7 @@ import org.apache.rocketmq.client.apis.consumer.PushConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.ByteBuffer;
 import java.util.Collections;
 
 /**
@@ -24,7 +25,7 @@ public class PushConsumerExample01 {
 
     public static void main(String[] args) throws Exception {
         // 接入点地址：需要设置成Proxy的地址和端口列表，一般是：xxx:8081;xxx:8081
-        final String endpoint = "172.23.192.104:8081";
+        final String endpoint = "172.29.67.83:8081";
         final ClientConfiguration configuration = ClientConfiguration.newBuilder()
                 .setEndpoints(endpoint)
                 .build();
@@ -45,9 +46,23 @@ public class PushConsumerExample01 {
                 .setSubscriptionExpressions(Collections.singletonMap(topic, filterExpression))
                 // 设置消费监听器
                 .setMessageListener(messageView -> {
-                    // 处理消息并返回消费结果
-                    LOGGER.info("Consume message successfully, messageId = {}", messageView.getMessageId());
-                    return ConsumeResult.SUCCESS;
+                    try {
+                        // 处理消息并返回消费结果
+                        LOGGER.info("Consume message successfully, messageId = {}", messageView.getMessageId());
+                        final ByteBuffer byteBuffer = messageView.getBody();
+                        System.out.println(byteBuffer.isReadOnly());
+                        final byte[] data = new byte[byteBuffer.limit()];
+                        int i = 0;
+                        while (byteBuffer.hasRemaining()) {
+                            data[i] = byteBuffer.get();
+                            i++;
+                        }
+                        System.out.println(new String(data));
+                        return ConsumeResult.SUCCESS;
+                    } catch (Exception e) {
+                        LOGGER.error("消费失败：", e);
+                        return ConsumeResult.FAILURE;
+                    }
                 })
                 .build();
         Thread.sleep(Long.MAX_VALUE);
