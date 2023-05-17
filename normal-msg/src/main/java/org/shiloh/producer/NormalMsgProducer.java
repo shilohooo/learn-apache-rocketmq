@@ -24,7 +24,7 @@ public class NormalMsgProducer {
     public static void main(String[] args) {
         final ClientServiceProvider clientServiceProvider = ClientServiceProvider.loadService();
         final ClientConfiguration clientConfiguration = ClientConfiguration.newBuilder()
-                .setEndpoints("172.29.67.83:8081")
+                .setEndpoints("172.23.192.104:8081")
                 .build();
         try (
                 final Producer producer = clientServiceProvider

@@ -20,7 +20,7 @@ import java.util.Collections;
 public class NormalMsgConsumer {
     public static void main(String[] args) throws Exception {
         final ClientConfiguration configuration = ClientConfiguration.newBuilder()
-                .setEndpoints("172.29.67.83:8081")
+                .setEndpoints("172.23.192.104:8081")
                 .build();
         final FilterExpression expression = new FilterExpression(NormalMsgProducer.MSG_TAG, FilterExpressionType.TAG);
         final PushConsumer pushConsumer = ClientServiceProvider.loadService()
