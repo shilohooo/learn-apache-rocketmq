@@ -27,6 +27,8 @@
         <module>normal-msg</module>
         <!--        延迟消息示例-->
         <module>delay-msg</module>
+        <!--        顺序消息示例-->
+        <module>ordered-msg</module>
     </modules>
 
     <properties>
