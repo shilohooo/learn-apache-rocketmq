@@ -29,6 +29,10 @@
         <module>delay-msg</module>
         <!--        顺序消息示例-->
         <module>ordered-msg</module>
+        <!--        事务消息-->
+        <module>transaction-msg</module>
+        <!--        通用模块-->
+        <module>common</module>
     </modules>
 
     <properties>
@@ -80,6 +84,11 @@
                 <version>${apache-commons-lang3.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.shiloh</groupId>
+                <artifactId>common</artifactId>
+                <version>${version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -98,6 +107,11 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.shiloh</groupId>
+            <artifactId>common</artifactId>
         </dependency>
     </dependencies>
 </project>
