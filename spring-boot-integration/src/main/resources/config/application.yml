@@ -1,0 +1,13 @@
+rocketmq:
+  # 服务器地址
+  name-server: 192.168.1.103:9876
+  # 生产者配置
+  producer:
+    # 分组名称
+    group: shiloh
+    # 消息发送超时时间，默认值：3000，单位：ms
+    send-message-timeout: 5000
+
+logging:
+  level:
+    root: info
